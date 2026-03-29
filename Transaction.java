@@ -1,16 +1,14 @@
-class Transaction implements Runnable {
+class Transaction implements Runnable{
     private BankAccount account;
-
-    public Transaction(BankAccount account) {
+    Transaction(BankAccount account){
         this.account = account;
     }
-
     @Override
     public void run() {
-        for (int i = 0; i < 3; i++) { // loop
+        for (int i = 0; i < 3; i++) {
             account.deposit(1000);
             account.withdraw(500);
+            System.out.println(Thread.currentThread().getName() + " - " + account); 
         }
-        account.displayBalance();
     }
 }
